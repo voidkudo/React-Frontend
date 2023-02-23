@@ -4,9 +4,10 @@ import "aos/dist/aos.css";
 import './App.css';
 import Home from './section/Home';
 import Section1 from './section/Section1';
-import { IconButton } from '@mui/material';
+import { Divider, IconButton } from '@mui/material';
 
 import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
+import Buttom from './section/Buttom';
 
 function App() {
   const [isBackToTopButtonShow, setIsBackToTopButtonShow] = useState<boolean>(false);
@@ -16,7 +17,7 @@ function App() {
   };
 
   const checkScroll = () => {
-    if (window.scrollY > 250) {
+    if (window.scrollY > 100) {
       setIsBackToTopButtonShow(true);
     } else {
       setIsBackToTopButtonShow(false);
@@ -29,11 +30,11 @@ function App() {
   }, [])
 
   return (
-    <div>
+    <div className='App'>
       <Home />
-      <div className='HorizontalLine' />
+      <Divider variant='middle'/>
       <Section1 />
-      <div className='HorizontalLine' />
+      <Buttom />
       {isBackToTopButtonShow ?
         <div className='BackToTop'>
           <IconButton onClick={() => backToTop()}>
