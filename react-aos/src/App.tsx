@@ -9,6 +9,8 @@ import { AppBar, createTheme, Divider, IconButton, ThemeProvider, Toolbar } from
 import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
 import Buttom from './section/Buttom';
 
+// https://colorhunt.co/palette/2b3a55ce7777e8c4c4f2e5e5
+
 function App() {
   const theme = createTheme({
     palette: {

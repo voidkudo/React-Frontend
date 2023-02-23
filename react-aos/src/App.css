@@ -4,7 +4,7 @@
 
 .App {
   scrollbar-width: none;
-  background-color: #E8C4C4;
+  background-color: #F2E5E5;
 }
 
 .AppBar {
@@ -59,7 +59,7 @@
 .Bottom {
   height: 20vh;
   padding: 0 10vw;
-  color: #F2E5E5;
+  color: #E8C4C4;
   background-color: #2B3A55;
   display: flex;
   flex-direction: column;
@@ -73,5 +73,5 @@
 }
 
 .GithubLink {
-  color: #F2E5E5;
+  color: #E8C4C4;
 }
