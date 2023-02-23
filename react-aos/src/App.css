@@ -7,13 +7,21 @@
   background-color: #E8C4C4;
 }
 
-.Home {
+.AppBar {
+  color: #2B3A55;
+}
+
+.Top {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: #2B3A55;
+}
+
+.TimeAndTemp {
+  text-align: center;
 }
 
 .ScrollDown {
@@ -44,7 +52,7 @@
   right: 5%;
   bottom: 5%;
   background-color: #CE7777;
-  opacity: 0.5;
+  opacity: 0.8;
   border-radius: 50%;
 }
 
@@ -54,6 +62,16 @@
   color: #F2E5E5;
   background-color: #2B3A55;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
+}
+
+.GithubText {
+  display: flex;
+  align-items: center;
+}
+
+.GithubLink {
+  color: #F2E5E5;
 }

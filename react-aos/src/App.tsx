@@ -2,14 +2,22 @@ import React, { useEffect, useState } from 'react';
 import AOS from 'aos';
 import "aos/dist/aos.css";
 import './App.css';
-import Home from './section/Home';
+import Top from './section/Top';
 import Section1 from './section/Section1';
-import { Divider, IconButton } from '@mui/material';
+import { AppBar, createTheme, Divider, IconButton, ThemeProvider, Toolbar } from '@mui/material';
 
 import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
 import Buttom from './section/Buttom';
 
 function App() {
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#2B3A55',
+      },
+    },
+  });
+
   const [isBackToTopButtonShow, setIsBackToTopButtonShow] = useState<boolean>(false);
 
   const backToTop = () => {
@@ -31,8 +39,14 @@ function App() {
 
   return (
     <div className='App'>
-      <Home />
-      <Divider variant='middle'/>
+      <ThemeProvider theme={theme}>
+        <AppBar className='AppBar' position='sticky' color='primary'>
+          <Toolbar>
+          </Toolbar>
+        </AppBar>
+      </ThemeProvider>
+      <Top />
+      <Divider variant='middle' />
       <Section1 />
       <Buttom />
       {isBackToTopButtonShow ?
