@@ -1,14 +1,9 @@
-.App {
-  margin: 0 10% 0 10%;
-}
-
 .Home {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-bottom: solid #282c34 1px;
 }
 
 .ScrollDown {
@@ -26,12 +21,19 @@
   }
 }
 
+.HorizontalLine {
+  width: 80vw;
+  margin: 0 auto;
+  border-top: solid #282c34 1px;
+}
+
 .Section {
   height: 50vh;
+  width: 80vw;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: solid #282c34 1px;
 }
 
 .BackToTop {
