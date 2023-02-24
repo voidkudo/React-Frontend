@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AppBar, Icon, Toolbar } from "@mui/material";
+import { Icon } from "@mui/material";
 
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
