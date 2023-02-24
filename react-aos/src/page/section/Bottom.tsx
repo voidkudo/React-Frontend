@@ -2,7 +2,7 @@ import { Icon } from "@mui/material";
 
 import GitHubIcon from '@mui/icons-material/GitHub';
 
-export default function Buttom() {
+export default function Bottom() {
   return (
     <div className='Bottom'>
       <div className='GithubText'>

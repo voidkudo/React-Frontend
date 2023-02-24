@@ -2,13 +2,10 @@ import React, { useEffect, useState } from 'react';
 import AOS from 'aos';
 import "aos/dist/aos.css";
 import './App.css';
-import Top from './section/Top';
-import Section1 from './section/Section1';
-import { AppBar, createTheme, Divider, IconButton, ThemeProvider, Toolbar } from '@mui/material';
+import Home from './page/Home';
+import { AppBar, createTheme, IconButton, ThemeProvider, Toolbar } from '@mui/material';
 
 import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
-import Buttom from './section/Buttom';
-
 // https://colorhunt.co/palette/2b3a55ce7777e8c4c4f2e5e5
 
 function App() {
@@ -47,10 +44,7 @@ function App() {
           </Toolbar>
         </AppBar>
       </ThemeProvider>
-      <Top />
-      <Divider variant='middle' />
-      <Section1 />
-      <Buttom />
+      <Home />
       {isBackToTopButtonShow ?
         <div className='BackToTop'>
           <IconButton onClick={() => backToTop()}>
