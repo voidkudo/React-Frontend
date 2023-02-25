@@ -3,25 +3,16 @@ import AOS from 'aos';
 import "aos/dist/aos.css";
 import './App.css';
 import Home from './page/Home';
-import {  Box, createTheme, IconButton, Tab, Tabs, ThemeProvider } from '@mui/material';
-
+import { IconButton } from '@mui/material';
+import { createBrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
-import HomeIcon from '@mui/icons-material/Home';
+import TopBar from './component/TopBar';
 
-export const Pages = ['Page1', 'Page2', 'Page3'];
+export const Pages = ['page1', 'page2', 'page3'];
 
 // https://colorhunt.co/palette/2b3a55ce7777e8c4c4f2e5e5
 
 function App() {
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: '#CE7777',
-      },
-    },
-  });
-
-  const [selectedTab, setSelectedTab] = useState('Home');
   const [isBackToTopButtonShow, setIsBackToTopButtonShow] = useState<boolean>(false);
 
   const backToTop = () => {
@@ -36,19 +27,6 @@ function App() {
     }
   };
 
-  const handleTabClick = (event: React.SyntheticEvent, newValue: string) => {
-    setSelectedTab(newValue);
-  };
-
-  const getPage = (page: string) => {
-    switch(page) {
-      case 'Home':
-        return <Home />;
-      default:
-        return <></>;
-    }
-  };
-
   useEffect(() => {
     AOS.init();
     window.addEventListener('scroll', checkScroll)
@@ -56,19 +34,14 @@ function App() {
 
   return (
     <div className='App'>
-      <ThemeProvider theme={theme}>
-        <Box sx={{ width: '100vw', backgroundColor: '#2B3A55' }}>
-          <Tabs value={selectedTab} onChange={(event, newValue) => handleTabClick(event, newValue)} centered indicatorColor='primary'>
-            <Tab label={<span className='Tab'>HOME</span>} value='Home' icon={<HomeIcon className='Tab' />} iconPosition='start' />
-            {
-              Pages.map(tab =>
-                <Tab key={tab} label={<span className='Tab'>{tab}</span>} value={tab} />
-              )
-            }
-          </Tabs>
-        </Box>
-      </ThemeProvider>
-      {getPage(selectedTab)}
+      <TopBar />
+      <Routes>
+        <Route path='/home' element={<Home />} />
+        <Route path='/page1' element={<Home />} />
+        <Route path='/page2' element={<Home />} />
+        <Route path='/page3' element={<Home />} />
+        <Route path='*' element={<Navigate to='/home' />} />
+      </Routes>
       {isBackToTopButtonShow ?
         <div className='BackToTop'>
           <IconButton onClick={() => backToTop()}>

@@ -3,7 +3,7 @@ import { Icon } from "@mui/material";
 
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
-export default function Top() {
+export default function HomeMain() {
   const [date, setDate] = useState(new Date());
   const [temperature, setTemperature] = useState('');
 
