@@ -1,5 +1,5 @@
 import { Divider } from "@mui/material";
-import Bottom from "./section/Bottom";
+import Footer from "./section/Footer";
 import Section1 from "./section/Section1";
 import HomeMain from "./section/HomeMain";
 
@@ -9,7 +9,7 @@ export default function Home() {
       <HomeMain />
       <Divider variant='middle' />
       <Section1 />
-      <Bottom />
+      <Footer />
     </div>
   )
 };
