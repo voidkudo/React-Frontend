@@ -4,9 +4,10 @@ import "aos/dist/aos.css";
 import './App.css';
 import Home from './page/Home';
 import { IconButton } from '@mui/material';
-import { createBrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
 import TopBar from './component/TopBar';
+import Footer from './page/section/Footer';
 
 export const Pages = ['page1', 'page2', 'page3'];
 
@@ -37,11 +38,10 @@ function App() {
       <TopBar />
       <Routes>
         <Route path='/home' element={<Home />} />
-        <Route path='/page1' element={<Home />} />
-        <Route path='/page2' element={<Home />} />
-        <Route path='/page3' element={<Home />} />
+        <Route path='/about' element={<Home />} />
         <Route path='*' element={<Navigate to='/home' />} />
       </Routes>
+      <Footer />
       {isBackToTopButtonShow ?
         <div className='BackToTop'>
           <IconButton onClick={() => backToTop()}>

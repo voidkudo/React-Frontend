@@ -11,7 +11,7 @@
   color: #E8C4C4;
 }
 
-.Top {
+.HomeMain {
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -20,8 +20,18 @@
   color: #2B3A55;
 }
 
-.TimeAndTemp {
+.HomeMainContainer {
   text-align: center;
+}
+
+.DateTime {
+  text-align: center;
+}
+
+.Weather{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .ScrollDown {
@@ -40,7 +50,7 @@
 }
 
 .Section {
-  height: 50vh;
+  height: 80vh;
   padding: 0 10vw;
   display: flex;
   justify-content: center;
