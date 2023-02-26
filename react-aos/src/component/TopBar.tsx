@@ -1,8 +1,7 @@
-import { Box, createTheme, Tab, Tabs, ThemeProvider } from "@mui/material";
+import { AppBar, createTheme, Tab, Tabs, ThemeProvider } from "@mui/material";
 import { Pages } from "../App";
 import HomeIcon from '@mui/icons-material/Home';
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 
 export default function TopBar() {
   const navigate = useNavigate();
@@ -12,6 +11,9 @@ export default function TopBar() {
   const theme = createTheme({
     palette: {
       primary: {
+        main: '#2B3A55',
+      },
+      secondary: {
         main: '#CE7777',
       },
     },
@@ -19,8 +21,8 @@ export default function TopBar() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ position: 'fixed', width: '100vw', backgroundColor: '#2B3A55' }}>
-        <Tabs value={currentPage} onChange={(event, newValue) => navigate('/' + newValue)} centered indicatorColor='primary'>
+      <AppBar position='static' color='primary'>
+        <Tabs value={currentPage} onChange={(event, newValue) => navigate('/' + newValue)} centered indicatorColor='secondary'>
           <Tab label={<span className='Tab'>HOME</span>} value='home' icon={<HomeIcon className='Tab' />} iconPosition='start' />
           {
             Pages.map(tab =>
@@ -28,7 +30,7 @@ export default function TopBar() {
             )
           }
         </Tabs>
-      </Box>
+      </AppBar>
     </ThemeProvider>
   )
 };

@@ -1,16 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Icon } from "@mui/material";
+import { DateTime } from "luxon";
 
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import ThermostatIcon from '@mui/icons-material/Thermostat';
-import OpacityIcon from '@mui/icons-material/Opacity';
+import WavesIcon from '@mui/icons-material/Waves';
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
 
 export default function HomeMain() {
-  const [date, setDate] = useState(new Date());
-  const [weather, setWeather] = useState();
+  const [date, setDate] = useState(DateTime.now());
+  const [weather, setWeather] = useState({});
 
   const updateTime = () => {
-    setDate(new Date());
+    setDate(DateTime.now());
   };
 
   const updateWeather = () => {
@@ -47,25 +49,74 @@ export default function HomeMain() {
     }
   };
 
+  const getUVData = (weather: any) => {
+    try {
+      let UVIndex = 0;
+      let exposureLevel = '';
+      weather.uvindex.data.forEach((record: any) => {
+        UVIndex += record.value;
+      });
+      UVIndex /= weather.uvindex.data.length;
+      const exposureLevels = weather.uvindex.data.map((record: any) => record.desc);
+      let maxCount = 0;
+      for (let i = 0; i < exposureLevels.length; i++) {
+        let count = 0;
+        for (let j = 0; j < exposureLevels.length; j++) {
+          if (exposureLevels[i] === exposureLevels[j]) {
+            count++;
+          }
+        }
+        if (count > maxCount) {
+          maxCount = count;
+          exposureLevel = exposureLevels[i];
+        }
+      }
+      return { index: UVIndex.toFixed(0), level: exposureLevel };
+    }
+    catch {
+      return undefined;
+    }
+  }
+
+  const getDateTimeContent = (date: DateTime) => {
+    return (
+      <div className='DateTime'>
+        <h1>{date.toFormat('yyyy-MM-dd, cccc')}</h1>
+        <h1>{date.toFormat('hh:mm:ss a')}</h1>
+      </div>
+    )
+  };
+
   const getWeatherContent = (weather: any) => {
     const temperature = getTemperature(weather);
     const humidity = getHumidity(weather);
-    if (temperature !== undefined && humidity !== undefined) {
-      return (
+    const uvData = getUVData(weather);
+    return (
+      <div className='Weather'>
         <h1>
           <Icon>
             <ThermostatIcon />
           </Icon>
-          {temperature + '°C・'}
-          <Icon>
-            <OpacityIcon />
-          </Icon>
-          {humidity + '%'}
+          {temperature === undefined ? '--' : temperature + '°C・'}
         </h1>
-      );
-    } else {
-      return <></>;
-    }
+        <h1>
+          <Icon>
+            <WavesIcon />
+          </Icon>
+          {humidity === undefined ? '--' : humidity + '%'}
+        </h1>
+        {
+          uvData !== undefined ?
+            <h1>
+              {'・'}
+              <Icon>
+                <WbSunnyIcon />
+              </Icon>
+              {' ' + uvData!.index + ' (' + uvData!.level.toUpperCase() + ')'}
+            </h1> : null
+        }
+      </div>
+    );
   };
 
   useEffect(() => {
@@ -75,17 +126,17 @@ export default function HomeMain() {
   }, []);
 
   return (
-    <div className='Top'>
-      <div className='TimeAndTemp'>
-        <h1>{date.toTimeString().slice(0, 8)}</h1>
-        {getWeatherContent(weather)}
+      <div className='HomeMain'>
+        <div className='HomeMainContainer'>
+          {getDateTimeContent(date)}
+          {useMemo(() => getWeatherContent(weather), [weather])}
+        </div>
+        <div className='ScrollDown'>
+          <div>Scroll Down</div>
+          <Icon>
+            <KeyboardArrowDownIcon />
+          </Icon>
+        </div>
       </div>
-      <div className='ScrollDown'>
-        <div>Scroll Down</div>
-        <Icon>
-          <KeyboardArrowDownIcon />
-        </Icon>
-      </div>
-    </div>
   )
 }
