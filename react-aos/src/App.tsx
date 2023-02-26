@@ -9,7 +9,7 @@ import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp
 import TopBar from './component/TopBar';
 import Footer from './page/section/Footer';
 
-export const Pages = ['page1', 'page2', 'page3'];
+export const Pages = ['about'];
 
 // https://colorhunt.co/palette/2b3a55ce7777e8c4c4f2e5e5
 

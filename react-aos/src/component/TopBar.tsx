@@ -21,7 +21,7 @@ export default function TopBar() {
 
   return (
     <ThemeProvider theme={theme}>
-      <AppBar position='static' color='primary'>
+      <AppBar className='AppBar' position='fixed' color='primary'>
         <Tabs value={currentPage} onChange={(event, newValue) => navigate('/' + newValue)} centered indicatorColor='secondary'>
           <Tab label={<span className='Tab'>HOME</span>} value='home' icon={<HomeIcon className='Tab' />} iconPosition='start' />
           {
