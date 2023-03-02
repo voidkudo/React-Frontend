@@ -32,7 +32,7 @@
   text-align: center;
 }
 
-.Weather{
+.Weather {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,9 +45,12 @@
 }
 
 @keyframes MoveUpDown {
-  0%, 100% {
+
+  0%,
+  100% {
     bottom: 5%;
   }
+
   50% {
     bottom: 4%;
   }
@@ -88,4 +91,26 @@
 
 .GithubLink {
   color: #E8C4C4;
+}
+
+.Focus {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.TimeProgress {
+  width: 25vw;
+  margin: 5% 0;
+}
+
+.TimerControlContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.FocusTab {
+  color: #2B3A55;
 }
