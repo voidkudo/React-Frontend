@@ -6,6 +6,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import ThermostatIcon from '@mui/icons-material/Thermostat';
 import WavesIcon from '@mui/icons-material/Waves';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
+import Focus from "../../component/Focus";
 
 export default function HomeMain() {
   const [date, setDate] = useState(DateTime.now());
@@ -130,6 +131,7 @@ export default function HomeMain() {
         <div className='HomeMainContainer'>
           {getDateTimeContent(date)}
           {useMemo(() => getWeatherContent(weather), [weather])}
+          <Focus />
         </div>
         <div className='ScrollDown'>
           <div>Scroll Down</div>
